@@ -1,0 +1,44 @@
+# XcodeGen project spec.
+# Generate with `xcodegen generate` (CI does this automatically).
+name: Persona
+options:
+  bundleIdPrefix: app.persona
+  deploymentTarget:
+    iOS: "15.0"
+  createIntermediateGroups: true
+  defaultConfig: Release
+
+settings:
+  base:
+    DEVELOPMENT_TEAM: ""
+    CODE_SIGN_IDENTITY: ""
+    CODE_SIGNING_REQUIRED: NO
+    CODE_SIGNING_ALLOWED: NO
+    ENABLE_BITCODE: NO
+    SWIFT_VERSION: "5.10"
+    IPHONEOS_DEPLOYMENT_TARGET: "15.0"
+    TARGETED_DEVICE_FAMILY: "1"  # iPhone only
+    ONLY_ACTIVE_ARCH: NO
+    ARCHS: "arm64"
+
+targets:
+  Persona:
+    type: application
+    platform: iOS
+    sources:
+      - path: Persona
+    info:
+      path: Persona/Info.plist
+      properties:
+        UILaunchScreen: {}
+    entitlements:
+      path: Persona/Persona.entitlements
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.persona.twin
+        GENERATE_INFOPLIST_FILE: NO
+        INFOPLIST_FILE: Persona/Info.plist
+        AGENT_ID: "$(AGENT_ID)"
+        ELEVENLABS_API_KEY: "$(ELEVENLABS_API_KEY)"
+        BACKEND_URL: "$(BACKEND_URL)"
+        BACKEND_TOKEN: "$(BACKEND_TOKEN)"

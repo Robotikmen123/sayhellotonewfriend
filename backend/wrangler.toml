@@ -1,0 +1,25 @@
+name = "persona"
+main = "src/index.ts"
+compatibility_date = "2026-04-01"
+compatibility_flags = ["nodejs_compat"]
+
+# KV stores
+# Bind a single namespace; key prefixes namespace different data:
+#   persona:<user>           → persona dossier (markdown)
+#   voice:<user>             → ElevenLabs voice_id
+#   memory:<user>:<ts>       → individual memory chunks (JSON)
+#   memory_index:<user>      → JSON list of {ts, embedding, summary} for retrieval
+[[kv_namespaces]]
+binding = "PERSONA_KV"
+id = "REPLACE_WITH_KV_ID"
+
+[vars]
+DEFAULT_MODEL = "claude-sonnet-4-6"
+SUMMARY_MODEL = "claude-haiku-4-5-20251001"
+EMBED_MODEL = "voyage-3-large"
+USER_NAME = "Ali"
+
+# Secrets (set via `wrangler secret put NAME`):
+#   ANTHROPIC_API_KEY
+#   VOYAGE_API_KEY
+#   ELEVENLABS_WEBHOOK_TOKEN  (shared secret; ElevenLabs sends as bearer)

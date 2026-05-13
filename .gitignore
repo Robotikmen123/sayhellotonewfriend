@@ -1,0 +1,40 @@
+# Secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# Persona artifacts (do NOT commit your private chat data)
+persona_doc.md
+*_chat.txt
+*.zip
+data/
+exports/
+voice_samples/
+voice_clone.mp3
+voice_clone.wav
+
+# Node / wrangler
+backend/node_modules/
+backend/.wrangler/
+backend/dist/
+backend/.dev.vars
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# iOS / Xcode
+ios/build/
+ios/DerivedData/
+*.xcuserstate
+*.xcuserdata/
+*.ipa
+Payload/
+
+# OS
+.DS_Store
+Thumbs.db
