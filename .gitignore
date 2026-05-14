@@ -35,6 +35,15 @@ ios/DerivedData/
 *.ipa
 Payload/
 
+# Android / Gradle
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/captures/
+*.apk
+*.aab
+
 # OS
 .DS_Store
 Thumbs.db
