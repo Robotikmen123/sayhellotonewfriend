@@ -23,10 +23,34 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-        with:
-          packages: 'platforms;android-35 build-tools;35.0.0 platform-tools'
+      - name: Diagnose environment
+        run: |
+          set -x
+          java -version
+          which gradle || true
+          echo "ANDROID_HOME=$ANDROID_HOME"
+          echo "ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT"
+          ls -la "$ANDROID_HOME" || true
+          ls "$ANDROID_HOME/cmdline-tools/latest/bin" || true
+
+      - name: Accept SDK licenses and install required packages
+        run: |
+          set -e
+          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses >/dev/null
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" \
+            "platform-tools" \
+            "platforms;android-35" \
+            "build-tools;35.0.0"
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --list_installed | grep -E "(android-35|build-tools;35)"
+
+      - name: Verify wrapper
+        working-directory: android
+        run: |
+          set -x
+          chmod +x ./gradlew
+          ls -la gradle/wrapper/
+          file gradle/wrapper/gradle-wrapper.jar
+          ./gradlew --version
 
       - name: Cache Gradle
         uses: actions/cache@v4
@@ -39,13 +63,23 @@ jobs:
 
       - name: Build debug APK
         working-directory: android
-        run: |
-          chmod +x ./gradlew
-          ./gradlew :app:assembleDebug --no-daemon --stacktrace
+        run: ./gradlew :app:assembleDebug --no-daemon --info --stacktrace
 
       - name: Upload APK
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: DigitalCircus-debug-apk
           path: android/app/build/outputs/apk/debug/app-debug.apk
           retention-days: 30
+
+      - name: Upload build reports on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-reports
+          path: |
+            android/app/build/reports
+            android/build/reports
+          retention-days: 7
+          if-no-files-found: ignore
