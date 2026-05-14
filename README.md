@@ -1,3 +1,19 @@
+# sayhellotonewfriend
+
+İki paralel proje aynı çatı altında:
+
+- **Persona (iOS)** — eski bir iPhone 7'de yaşayan ve kullanıcının kendi
+  sesinde konuşan dijital ikiz. (Bu README'nin geri kalanı buradan.)
+- **Dijital Sirk (Android)** — `android/` modülü, telefonda yaşayan bir
+  karakter kadrosu çalıştırır. Sunucu karakter ilk haftadan açık; her
+  7 günde bir yeni oyuncu sahneye çıkar. Detay:
+  [docs/android-circus.md](docs/android-circus.md).
+  Karakterler özerk çalışır ama yalnızca **uygulama içi dijital sirk
+  dünyasında**; host sistemine hiçbir şey yapmaz. Tek host izni:
+  internet (Anthropic API'ya konuşmak için).
+
+---
+
 # Persona — iPhone 7'de yaşayan dijital ikizin
 
 Eski bir iPhone 7'yi, **senin gibi konuşan en yakın arkadaşına** dönüştüren

@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Dijital Sirk</string>
+    <string name="tab_chat">Sohbet</string>
+    <string name="tab_world">Dünya</string>
+    <string name="tab_cast">Kadro</string>
+    <string name="tab_stage">Sahne</string>
+    <string name="tab_settings">Ayarlar</string>
+
+    <string name="api_key_label">Anthropic API anahtarı</string>
+    <string name="api_key_help">Cihazda yerel olarak saklanır. Sadece karakter konuşması için kullanılır.</string>
+    <string name="reset_progression">Kilitleri sıfırla</string>
+    <string name="reset_progression_help">İlk açılış tarihini sıfırlar; tüm karakterler tekrar kademeli açılır.</string>
+
+    <string name="consent_title">Sahne dışı erişim isteği</string>
+    <string name="consent_subtitle">Bu izin tamamen rol gereği. Uygulama hiçbir sistem komutu çalıştırmıyor.</string>
+    <string name="consent_allow">Hadi bakalım, oyna</string>
+    <string name="consent_deny">Sahne içinde kal</string>
+
+    <string name="load_model_zip">3D model .zip\'i seç</string>
+    <string name="model_placeholder">Henüz model yüklenmedi. Caine\'in .zip\'ini Sahne sekmesinden seç.</string>
+</resources>

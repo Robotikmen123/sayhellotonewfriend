@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        INTERNET is the only host capability we request: it talks to the Anthropic
+        API on the user's behalf so the in-app character can think and improvise.
+        We deliberately do NOT request:
+          - READ/WRITE_EXTERNAL_STORAGE outside the app's own scoped storage
+          - SYSTEM_ALERT_WINDOW (no overlays on top of other apps)
+          - PACKAGE_USAGE_STATS, QUERY_ALL_PACKAGES, ACCESSIBILITY_SERVICE
+          - any contact / SMS / call-log / location / microphone permission
+        The in-character "consent" dialogs are pure roleplay — they never map to
+        a real system action. See data/RoleplayConsentLedger.kt for the audit log.
+    -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <queries>
+        <!-- Open user-supplied 3D model .zip files via SAF only. -->
+        <intent>
+            <action android:name="android.intent.action.OPEN_DOCUMENT" />
+            <data android:mimeType="application/zip" />
+        </intent>
+    </queries>
+
+    <application
+        android:name=".CircusApp"
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.DigitalCircus"
+        android:usesCleartextTraffic="false"
+        tools:targetApi="34"
+        xmlns:tools="http://schemas.android.com/tools">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:configChanges="orientation|screenSize|keyboardHidden|uiMode"
+            android:theme="@style/Theme.DigitalCircus">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+</manifest>
