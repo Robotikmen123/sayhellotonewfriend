@@ -1,0 +1,7 @@
+<resources>
+    <style name="Theme.DigitalCircus" parent="android:Theme.Material.NoActionBar">
+        <item name="android:statusBarColor">@color/circus_navy</item>
+        <item name="android:navigationBarColor">@color/circus_black</item>
+        <item name="android:windowBackground">@color/circus_navy</item>
+    </style>
+</resources>

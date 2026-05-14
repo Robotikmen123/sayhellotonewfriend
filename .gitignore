@@ -9,9 +9,9 @@
 persona_doc.md
 *_chat.txt
 *.zip
-data/
-exports/
-voice_samples/
+/data/
+/exports/
+/voice_samples/
 voice_clone.mp3
 voice_clone.wav
 
@@ -34,6 +34,15 @@ ios/DerivedData/
 *.xcuserdata/
 *.ipa
 Payload/
+
+# Android / Gradle
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/captures/
+*.apk
+*.aab
 
 # OS
 .DS_Store
