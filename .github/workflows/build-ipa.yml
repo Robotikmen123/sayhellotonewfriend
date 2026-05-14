@@ -3,6 +3,12 @@ name: build-ipa
 on:
   push:
     branches: [main, "claude/**"]
+    paths:
+      - 'ios/**'
+      - 'build/**'
+      - 'scripts/**'
+      - 'backend/**'
+      - '.github/workflows/build-ipa.yml'
   workflow_dispatch:
 
 jobs:
