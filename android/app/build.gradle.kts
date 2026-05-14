@@ -78,8 +78,10 @@ dependencies {
     implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.12")
     implementation("io.ktor:ktor-client-logging:2.3.12")
 
-    // 3D model viewer (Filament-based). Pulled when user enables 3D in Settings.
-    implementation("io.github.sceneview:sceneview:2.2.1")
+    // 3D model viewer (Filament-based) is wired up later when a Compose
+    // Scene host is added. The Stage tab currently shows model metadata only,
+    // so no render-side dependency is needed for the APK to build.
+    // implementation("io.github.sceneview:sceneview:2.2.1")
 
     debugImplementation("androidx.compose.ui:ui-tooling")
 }
